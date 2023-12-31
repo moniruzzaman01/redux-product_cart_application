@@ -1,15 +1,15 @@
+import { useSelector } from "react-redux";
 import Product from "./Product";
 
 export default function Products() {
+  const products = useSelector((state) => state.products);
+  console.log(products);
+
   return (
     <div className="productContainer" id="lws-productContainer">
-      <Product />
-      <Product />
-      <Product />
-      <Product />
-      <Product />
-      <Product />
-      <Product />
+      {products.map((product, key) => (
+        <Product key={key} product={product} />
+      ))}
     </div>
   );
 }
