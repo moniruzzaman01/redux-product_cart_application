@@ -1,6 +1,6 @@
 import PropTypes from "prop-types";
 import { useDispatch } from "react-redux";
-import { addToCart, deleteFromCart } from "../redux/cart/actions";
+import { addToCart, decreaseQty, deleteFromCart } from "../redux/cart/actions";
 
 export default function CartProduct({ productData }) {
   const dispatch = useDispatch();
@@ -35,7 +35,10 @@ export default function CartProduct({ productData }) {
             <i className="text-lg fa-solid fa-plus"></i>
           </button>
           <span className="lws-cartQuantity">{productQty}</span>
-          <button className="lws-decrementQuantity">
+          <button
+            onClick={() => dispatch(decreaseQty(productId))}
+            className="lws-decrementQuantity"
+          >
             <i className="text-lg fa-solid fa-minus"></i>
           </button>
         </div>

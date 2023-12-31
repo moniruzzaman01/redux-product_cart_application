@@ -6,10 +6,10 @@ export const addToCart = (productData) => {
     payload: { productData },
   };
 };
-export const decreaseQty = (productId, productData) => {
+export const decreaseQty = (productId) => {
   return {
     type: DECREASEQTY,
-    payload: { productId, productData },
+    payload: { productId },
   };
 };
 export const deleteFromCart = (productId) => {

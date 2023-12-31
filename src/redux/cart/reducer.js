@@ -40,8 +40,25 @@ const reducer = (state = intitialState, action) => {
         });
       }
     }
-    case DECREASEQTY:
-      return;
+    case DECREASEQTY: {
+      const isAvailable = state.some(
+        (product) => product.productId == action.payload.productId
+      );
+      if (!isAvailable) {
+        return state;
+      } else {
+        return state.map((product) => {
+          if (product.productId == action.payload.productId) {
+            return {
+              ...product,
+              productQty: product.productQty - 1,
+              totalPrice: (product.productQty - 1) * product.productPrice,
+            };
+          }
+          return product;
+        });
+      }
+    }
     case DELETEFROMCART: {
       const newState = state.filter(
         (product) => product.productId != action.payload.productId
