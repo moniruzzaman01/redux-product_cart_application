@@ -42,8 +42,12 @@ const reducer = (state = intitialState, action) => {
     }
     case DECREASEQTY:
       return;
-    case DELETEFROMCART:
-      return;
+    case DELETEFROMCART: {
+      const newState = state.filter(
+        (product) => product.productId != action.payload.productId
+      );
+      return newState;
+    }
     default:
       return state;
   }

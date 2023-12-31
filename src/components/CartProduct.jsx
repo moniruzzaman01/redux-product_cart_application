@@ -1,10 +1,11 @@
 import PropTypes from "prop-types";
 import { useDispatch } from "react-redux";
-import { addToCart } from "../redux/cart/actions";
+import { addToCart, deleteFromCart } from "../redux/cart/actions";
 
 export default function CartProduct({ productData }) {
   const dispatch = useDispatch();
   const {
+    productId,
     productName,
     productImage,
     productCategory,
@@ -43,7 +44,10 @@ export default function CartProduct({ productData }) {
         </p>
       </div>
       <div className="flex items-center justify-center col-span-2 mt-4 md:justify-end md:mt-0">
-        <button className="lws-removeFromCart">
+        <button
+          onClick={() => dispatch(deleteFromCart(productId))}
+          className="lws-removeFromCart"
+        >
           <i className="text-lg text-red-400 fa-solid fa-trash"></i>
         </button>
       </div>
