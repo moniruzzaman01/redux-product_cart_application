@@ -24,7 +24,7 @@ const reducer = (state = intitialState, action) => {
           ...state,
           {
             ...action.payload.productData,
-            availableQty: action.payload.productData.availableQty - 1,
+            availableQty: action.payload.productData.totalQty - 1,
             orderedQty: 1,
             totalPrice: action.payload.productData.productPrice,
           },

@@ -1,16 +1,20 @@
 import PropTypes from "prop-types";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { addToCart } from "../redux/cart/actions";
 
 export default function Product({ product }) {
   const dispatch = useDispatch();
+  const cart = useSelector((state) => state.cart);
   const {
+    productId,
     productName,
     productImage,
     productCategory,
     productPrice,
-    availableQty,
+    totalQty,
   } = product;
+  const availableQty =
+    totalQty - (cart.find((c) => c.productId == productId)?.orderedQty || 0);
 
   return (
     <div className="lws-productCard">
