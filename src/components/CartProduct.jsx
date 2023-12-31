@@ -10,7 +10,7 @@ export default function CartProduct({ productData }) {
     productImage,
     productCategory,
     productPrice,
-    productQty,
+    orderedQty,
     totalPrice,
   } = productData;
 
@@ -34,7 +34,7 @@ export default function CartProduct({ productData }) {
           >
             <i className="text-lg fa-solid fa-plus"></i>
           </button>
-          <span className="lws-cartQuantity">{productQty}</span>
+          <span className="lws-cartQuantity">{orderedQty}</span>
           <button
             onClick={() => dispatch(decreaseQty(productId))}
             className="lws-decrementQuantity"

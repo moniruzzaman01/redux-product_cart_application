@@ -7,7 +7,8 @@ const intitialState = [
   //   productImage: "https://i.dummyjson.com/data/products/59/thumbnail.jpg",
   //   productCategory: "Mens shoes",
   //   productPrice: 400,
-  //   productQty: 1,
+  //   availableQty: 1,
+  //   orderedQty: 1,
   //   totalPrice: 400,
   // },
 ];
@@ -23,48 +24,52 @@ const reducer = (state = intitialState, action) => {
           ...state,
           {
             ...action.payload.productData,
-            productQty: 1,
+            availableQty: action.payload.productData.availableQty - 1,
+            orderedQty: 1,
             totalPrice: action.payload.productData.productPrice,
           },
         ];
       } else {
         return state.map((product) => {
-          if (product.productId == action.payload.productData.productId) {
+          if (
+            product.productId == action.payload.productData.productId &&
+            product.availableQty > 0
+          ) {
             return {
               ...product,
-              productQty: product.productQty + 1,
-              totalPrice: (product.productQty + 1) * product.productPrice,
+              availableQty: product.availableQty - 1,
+              orderedQty: product.orderedQty + 1,
+              totalPrice: (product.orderedQty + 1) * product.productPrice,
             };
           }
           return product;
         });
       }
     }
-    case DECREASEQTY: {
-      const isAvailable = state.some(
-        (product) => product.productId == action.payload.productId
-      );
-      if (!isAvailable) {
-        return state;
-      } else {
-        return state.map((product) => {
-          if (product.productId == action.payload.productId) {
-            return {
-              ...product,
-              productQty: product.productQty - 1,
-              totalPrice: (product.productQty - 1) * product.productPrice,
-            };
-          }
-          return product;
-        });
-      }
-    }
+
+    case DECREASEQTY:
+      return state.map((product) => {
+        if (
+          product.productId == action.payload.productId &&
+          product.orderedQty > 0
+        ) {
+          return {
+            ...product,
+            availableQty: product.availableQty + 1,
+            orderedQty: product.orderedQty - 1,
+            totalPrice: (product.orderedQty - 1) * product.productPrice,
+          };
+        }
+        return product;
+      });
+
     case DELETEFROMCART: {
       const newState = state.filter(
         (product) => product.productId != action.payload.productId
       );
       return newState;
     }
+
     default:
       return state;
   }

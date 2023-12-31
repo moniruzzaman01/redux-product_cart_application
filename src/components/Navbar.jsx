@@ -4,7 +4,7 @@ import PropTypes from "prop-types";
 
 export default function Navbar({ setShow }) {
   const cart = useSelector((state) => state.cart);
-  const cartItems = cart.reduce((prev, curr) => prev + curr.productQty, 0);
+  const cartItems = cart.reduce((prev, curr) => prev + curr.orderedQty, 0);
 
   return (
     <nav className="bg-[#171C2A] py-4">

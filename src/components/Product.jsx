@@ -9,7 +9,7 @@ export default function Product({ product }) {
     productImage,
     productCategory,
     productPrice,
-    productQty,
+    availableQty,
   } = product;
 
   return (
@@ -23,7 +23,7 @@ export default function Product({ product }) {
             BDT <span className="lws-price">{productPrice}</span>
           </p>
           <p className="productQuantity">
-            QTY <span className="lws-quantity">{productQty}</span>
+            QTY <span className="lws-quantity">{availableQty}</span>
           </p>
         </div>
         <button

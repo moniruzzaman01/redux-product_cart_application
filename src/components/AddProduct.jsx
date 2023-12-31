@@ -10,14 +10,14 @@ export default function AddProduct() {
     const productCategory = e.target.productCategory.value;
     const productImage = e.target.productImage.value;
     const productPrice = e.target.productPrice.value;
-    const productQty = e.target.productQty.value;
+    const availableQty = e.target.availableQty.value;
     dispatch(
       add({
         productName,
         productCategory,
         productImage,
         productPrice,
-        productQty,
+        availableQty,
       })
     );
   };
@@ -79,7 +79,7 @@ export default function AddProduct() {
                 type="number"
                 id="lws-inputQuantity"
                 required
-                name="productQty"
+                name="availableQty"
               />
             </div>
           </div>

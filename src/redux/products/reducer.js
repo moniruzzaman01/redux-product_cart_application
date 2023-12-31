@@ -7,7 +7,7 @@ const initialState = [
     productImage: "https://i.dummyjson.com/data/products/59/thumbnail.jpg",
     productCategory: "Mens shoes",
     productPrice: 400,
-    productQty: 15,
+    availableQty: 5,
   },
   {
     productId: 1,
@@ -15,7 +15,7 @@ const initialState = [
     productImage: "https://i.dummyjson.com/data/products/59/thumbnail.jpg",
     productCategory: "Mens shoes 1",
     productPrice: 500,
-    productQty: 10,
+    availableQty: 2,
   },
 ];
 
