@@ -1,6 +1,9 @@
 import PropTypes from "prop-types";
+import { useDispatch } from "react-redux";
+import { addToCart } from "../redux/cart/actions";
 
 export default function Product({ product }) {
+  const dispatch = useDispatch();
   const {
     productName,
     productImage,
@@ -23,7 +26,12 @@ export default function Product({ product }) {
             QTY <span className="lws-quantity">{productQty}</span>
           </p>
         </div>
-        <button className="lws-btnAddToCart">Add To Cart</button>
+        <button
+          onClick={() => dispatch(addToCart(product))}
+          className="lws-btnAddToCart"
+        >
+          Add To Cart
+        </button>
       </div>
     </div>
   );

@@ -2,6 +2,7 @@ import { ADDPRODUCT } from "./actionTypes";
 
 const initialState = [
   {
+    productId: 0,
     productName: "Spring and summershoes",
     productImage: "https://i.dummyjson.com/data/products/59/thumbnail.jpg",
     productCategory: "Mens shoes",
@@ -16,6 +17,7 @@ const reducer = (state = initialState, action) => {
       return [
         ...state,
         {
+          productId: state.length,
           ...action.payload.productData,
         },
       ];

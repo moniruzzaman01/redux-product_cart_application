@@ -5,7 +5,7 @@ import Navbar from "./components/Navbar";
 import { useState } from "react";
 
 function App() {
-  const [show, setShow] = useState(true);
+  const [show, setShow] = useState(false);
 
   return (
     <div>
