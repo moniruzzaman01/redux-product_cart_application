@@ -9,6 +9,14 @@ const initialState = [
     productPrice: 400,
     productQty: 15,
   },
+  {
+    productId: 1,
+    productName: "Spring and summershoes 1",
+    productImage: "https://i.dummyjson.com/data/products/59/thumbnail.jpg",
+    productCategory: "Mens shoes 1",
+    productPrice: 500,
+    productQty: 10,
+  },
 ];
 
 const reducer = (state = initialState, action) => {

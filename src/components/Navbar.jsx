@@ -1,7 +1,11 @@
+import { useSelector } from "react-redux";
 import logo from "../assets/images/logo.png";
 import PropTypes from "prop-types";
 
 export default function Navbar({ setShow }) {
+  const cart = useSelector((state) => state.cart);
+  const cartItems = cart.reduce((prev, curr) => prev + curr.productQty, 0);
+
   return (
     <nav className="bg-[#171C2A] py-4">
       <div className="navBar">
@@ -24,7 +28,7 @@ export default function Navbar({ setShow }) {
             id="lws-cart"
           >
             <i className="text-xl fa-sharp fa-solid fa-bag-shopping"></i>
-            <span id="lws-totalCart">0</span>
+            <span id="lws-totalCart">{cartItems}</span>
           </a>
         </div>
       </div>

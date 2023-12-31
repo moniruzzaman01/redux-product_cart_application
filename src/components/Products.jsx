@@ -3,7 +3,6 @@ import Product from "./Product";
 
 export default function Products() {
   const products = useSelector((state) => state.products);
-  console.log(products);
 
   return (
     <div className="productContainer" id="lws-productContainer">

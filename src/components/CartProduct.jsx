@@ -1,6 +1,9 @@
 import PropTypes from "prop-types";
+import { useDispatch } from "react-redux";
+import { addToCart } from "../redux/cart/actions";
 
 export default function CartProduct({ productData }) {
+  const dispatch = useDispatch();
   const {
     productName,
     productImage,
@@ -24,7 +27,10 @@ export default function CartProduct({ productData }) {
       </div>
       <div className="flex items-center justify-center col-span-4 mt-4 space-x-8 md:mt-0">
         <div className="flex items-center space-x-4">
-          <button className="lws-incrementQuantity">
+          <button
+            onClick={() => dispatch(addToCart(productData))}
+            className="lws-incrementQuantity"
+          >
             <i className="text-lg fa-solid fa-plus"></i>
           </button>
           <span className="lws-cartQuantity">{productQty}</span>
